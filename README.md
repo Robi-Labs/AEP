@@ -149,7 +149,7 @@ Without AEP: resets every session
 
 ## Technical details
 
-### What is in `aep-exp/`
+### What is in `aep/`
 
 - `SKILL.md`  
   v1.0-exp behavior for an AEP-aware agent
@@ -187,25 +187,33 @@ Everything stays repo-local, file-only, and agent-agnostic.
 
 2. Copy templates:
 
-- `aep-exp/assets/templates/project.aep.json` -> `.agent/aep/project.aep.json`
-- `aep-exp/assets/templates/user.aep.json` -> `.agent/aep/user.aep.json`
-- `aep-exp/assets/templates/index.json` -> `.agent/aep/index.json`
+- `aep/assets/templates/project.aep.json` -> `.agent/aep/project.aep.json`
+- `aep/assets/templates/user.aep.json` -> `.agent/aep/user.aep.json`
+- `aep/assets/templates/index.json` -> `.agent/aep/index.json`
 - optionally:
-  - `aep-exp/assets/templates/task.generic.aep.json` -> `.agent/aep/tasks/<task>.aep.json`
+  - `aep/assets/templates/task.generic.aep.json` -> `.agent/aep/tasks/<task>.aep.json`
 
 3. Agent behavior:
 
 - read `.agent/AGENTS.md`
 - read `.agent/aep/*.json`
-- follow `aep-exp/SKILL.md`
+- follow `aep/SKILL.md`
 
 ---
 
 ## Links
 
-- `aep-exp/SKILL.md`
-- `aep-exp/references/schema.v1.md`
-- `aep-exp/references/integration-notes.v1.md`
-- `aep-exp/references/prompt-patterns.v1.md`
+- `aep/SKILL.md`
+- `aep/references/schema.v1.md`
+- `aep/references/integration-notes.v1.md`
+- `aep/references/prompt-patterns.v1.md`
 
+## Star History
 
+<a href="https://www.star-history.com/?repos=Robi-Labs%2FAEP&type=date&legend=bottom-right">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=Robi-Labs/AEP&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=Robi-Labs/AEP&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=Robi-Labs/AEP&type=date&legend=top-left" />
+ </picture>
+</a>
