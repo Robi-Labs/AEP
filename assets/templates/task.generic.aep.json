@@ -1,0 +1,51 @@
+{
+  "version": "1.0-exp",
+  "id": "generic-task-pattern-exp",
+  "scope": "task",
+  "title": "Generic task pattern (experimental)",
+  "status": "draft",
+  "source": {
+    "type": "successful_collaboration",
+    "created_at": "2026-03-31T00:00:00Z",
+    "confidence": 0.5
+  },
+  "match": {
+    "keywords": [],
+    "patterns": [],
+    "tags": []
+  },
+  "applies_to": {
+    "languages": [],
+    "frameworks": [],
+    "paths": [],
+    "domains": []
+  },
+  "strength": 0.5,
+  "intent": [
+    "Capture a reusable pattern for a recurring task so future runs start aligned, with experimental metadata for better ranking and evolution"
+  ],
+  "constraints": [],
+  "preferences": [],
+  "workflow": [],
+  "failure_traps": [],
+  "success_checks": [],
+  "metrics": {
+    "times_applied": 0,
+    "first_used_at": "2026-03-31T00:00:00Z",
+    "last_used_at": "2026-03-31T00:00:00Z",
+    "avg_turns_saved": 0
+  },
+  "history": [
+    {
+      "at": "2026-03-31T00:00:00Z",
+      "event": "created",
+      "reason": "Initial experimental generic task AEP template"
+    }
+  ],
+  "merge_suggestions": [],
+  "artifacts": {
+    "examples": [],
+    "notes": "Use this as a starting point for any task type. Fill in match fields, applies_to, signals, and checks after a specific successful collaboration."
+  }
+}
+

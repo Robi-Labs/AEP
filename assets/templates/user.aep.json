@@ -1,0 +1,51 @@
+{
+  "version": "1.0-exp",
+  "id": "user-collaboration-style",
+  "scope": "user",
+  "title": "User collaboration style and preferences (experimental)",
+  "status": "draft",
+  "source": {
+    "type": "successful_collaboration",
+    "created_at": "2026-03-31T00:00:00Z",
+    "confidence": 0.6
+  },
+  "match": {
+    "keywords": [],
+    "patterns": [],
+    "tags": []
+  },
+  "applies_to": {
+    "languages": [],
+    "frameworks": [],
+    "paths": [],
+    "domains": []
+  },
+  "strength": 0.6,
+  "intent": [
+    "Describe how this user prefers to work with agents across projects using experimental metadata"
+  ],
+  "constraints": [],
+  "preferences": [],
+  "workflow": [],
+  "failure_traps": [],
+  "success_checks": [],
+  "metrics": {
+    "times_applied": 0,
+    "first_used_at": "2026-03-31T00:00:00Z",
+    "last_used_at": "2026-03-31T00:00:00Z",
+    "avg_turns_saved": 0
+  },
+  "history": [
+    {
+      "at": "2026-03-31T00:00:00Z",
+      "event": "created",
+      "reason": "Initial experimental user-level AEP template"
+    }
+  ],
+  "merge_suggestions": [],
+  "artifacts": {
+    "examples": [],
+    "notes": "Use this to encode explanation style, decision-making preferences, and collaboration workflow that should travel with the user between repos."
+  }
+}
+

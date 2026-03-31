@@ -1,0 +1,51 @@
+{
+  "version": "1.0-exp",
+  "id": "project-defaults",
+  "scope": "project",
+  "title": "Project-wide defaults (experimental)",
+  "status": "draft",
+  "source": {
+    "type": "successful_collaboration",
+    "created_at": "2026-03-31T00:00:00Z",
+    "confidence": 0.7
+  },
+  "match": {
+    "keywords": [],
+    "patterns": [],
+    "tags": []
+  },
+  "applies_to": {
+    "languages": [],
+    "frameworks": [],
+    "paths": [],
+    "domains": []
+  },
+  "strength": 0.6,
+  "intent": [
+    "Capture project-wide preferences and constraints that apply across many tasks in this repo"
+  ],
+  "constraints": [],
+  "preferences": [],
+  "workflow": [],
+  "failure_traps": [],
+  "success_checks": [],
+  "metrics": {
+    "times_applied": 0,
+    "first_used_at": "2026-03-31T00:00:00Z",
+    "last_used_at": "2026-03-31T00:00:00Z",
+    "avg_turns_saved": 0
+  },
+  "history": [
+    {
+      "at": "2026-03-31T00:00:00Z",
+      "event": "created",
+      "reason": "Initial experimental project-level AEP for this repo"
+    }
+  ],
+  "merge_suggestions": [],
+  "artifacts": {
+    "examples": [],
+    "notes": "Populate with cross-task constraints and preferences that have proven useful across multiple successful collaborations."
+  }
+}
+

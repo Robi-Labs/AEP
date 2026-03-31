@@ -1,0 +1,33 @@
+{
+  "version": "1.0-exp",
+  "packs": [
+    {
+      "id": "project-defaults",
+      "scope": "project",
+      "version": "1.0-exp",
+      "path": "project.aep.json",
+      "tags": [],
+      "strength": 0.6,
+      "updated_at": "2026-03-31T00:00:00Z"
+    },
+    {
+      "id": "user-collaboration-style",
+      "scope": "user",
+      "version": "1.0-exp",
+      "path": "user.aep.json",
+      "tags": [],
+      "strength": 0.6,
+      "updated_at": "2026-03-31T00:00:00Z"
+    },
+    {
+      "id": "generic-task-pattern-exp",
+      "scope": "task",
+      "version": "1.0-exp",
+      "path": "tasks/generic-task-pattern-exp.aep.json",
+      "tags": [],
+      "strength": 0.5,
+      "updated_at": "2026-03-31T00:00:00Z"
+    }
+  ]
+}
+
