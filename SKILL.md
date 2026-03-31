@@ -9,7 +9,7 @@ This is an **experimental extension** of the Robi AEP Skill.
 
 Core idea remains the same:
 
-- Convert successful collaborations into **Agent Experience Packs (AEPs)** stored under `.agent/aep/`.
+- Convert successful collaborations into **Agent Experience Packs (AEPs)** stored in the active agent's directory.
 - Use those packs to align future tasks.
 
 v1.0-exp adds:
@@ -19,6 +19,50 @@ v1.0-exp adds:
 - optional **merge suggestions** between overlapping packs
 
 Everything is still **repo-local** and **file-only**.
+
+---
+
+## Agent-Aware Install Target (Required)
+
+Do **not** default to `.agent/` in v1.0-exp.
+
+When creating or updating AEP files, first detect which agent environment is active for the repo, then install into that agent's directory.
+
+Preferred targets:
+
+- Claude: `.claude/aep/`
+- Codex: `.codex/aep/`
+- Gemini: `.gemini/aep/`
+- OpenCode: `.opencode/aep/`
+- Cursor: `.cursor/aep/`
+
+If multiple agent directories exist, choose in this order:
+
+1. directory explicitly referenced by the user
+2. directory that already contains `aep/` files
+3. directory matching the currently used agent
+4. ask the user if still ambiguous
+
+Do not create `.agent/` for new installs.
+
+### Instruction file updates (Required after save/create)
+
+After creating an AEP pack (or initializing AEP in a repo), update agent instruction files so future sessions know to use AEP by default.
+
+Update/create these when present or relevant:
+
+- `AGENTS.md`
+- `CLAUDE.md`
+- Codex instructions file (for the repo's Codex setup)
+- Gemini instructions file (for the repo's Gemini setup)
+- OpenCode agent instruction/config file
+- Cursor project instruction/rules file
+
+Minimum instruction to add (adapt path to active target):
+
+- "Before starting tasks, load relevant AEP packs from `<agent-dir>/aep/`."
+- "Apply task packs first, then project, then user packs."
+- "After successful tasks, save new or updated AEP packs."
 
 ---
 
@@ -78,34 +122,41 @@ When the user asks to save the current successful workflow:
    - `history`:
      - one entry describing the initial creation (reason, timestamp).
    - `merge_suggestions`: leave empty by default.
-4. **Write pack**:
-   - Save as `.agent/aep/tasks/<id>.aep.json` with `"version": "1.0-exp"`.
-   - Update `.agent/aep/index.json`:
+4. **Resolve install target**:
+   - Detect active agent directory (`.claude`, `.codex`, `.gemini`, `.opencode`, `.cursor`).
+   - Set AEP root to `<agent-dir>/aep/`.
+5. **Write pack**:
+   - Save as `<agent-dir>/aep/tasks/<id>.aep.json` with `"version": "1.0-exp"`.
+   - Update `<agent-dir>/aep/index.json`:
      - include `version`, `scope`, `path`, `tags`, and `strength` if known.
-5. **Optional evidence**:
-   - Same as v0.1: `runs/<timestamp-id>/` folder with:
+6. **Update instruction files**:
+   - Update `AGENTS.md`, `CLAUDE.md`, and other agent instruction files in this repo to state that AEP should be loaded by default from `<agent-dir>/aep/`.
+7. **Optional evidence**:
+   - Same as v0.1: `<agent-dir>/aep/runs/<timestamp-id>/` folder with:
      - `transcript.summary.md`, `signals.json`, `outcome.json`, `generated-pack.json`.
 
 ### 2. `aep apply` (v1.0-exp)
 
 When applying packs before a task:
 
-1. **Load packs** with `version` `"0.1"` or `"1.0-exp"` (backwards compatible).
-2. **Compute a match score** per pack using:
+1. **Resolve install target**:
+   - detect active agent directory and use `<agent-dir>/aep/` as source.
+2. **Load packs** with `version` `"0.1"` or `"1.0-exp"` (backwards compatible).
+3. **Compute a match score** per pack using:
    - keyword/tag overlap (as in v0.1),
    - `applies_to` matches:
      - languages / frameworks,
      - file paths / domains.
-3. **Combine scores**:
+4. **Combine scores**:
    - final score = f(match_score, pack.`strength`).
-4. **Rank**:
+5. **Rank**:
    - by scope (task > project > user),
    - then by final score,
    - then by recency (`metrics.last_used_at` or `index.updated_at`).
-5. **Update metrics** for selected packs:
+6. **Update metrics** for selected packs:
    - increment `metrics.times_applied`.
    - update `metrics.last_used_at`.
-6. **Activate packs and explain**:
+7. **Activate packs and explain**:
    - merge signals as in v0.1 (task overrides project overrides user).
    - report:
      - which packs are active,
@@ -125,6 +176,7 @@ When promoting:
 
 - add history entries to both source and target packs.
 - optionally record a `merge_suggestions` note if packs should be merged later.
+- write promoted packs under the active `<agent-dir>/aep/` target, not `.agent/`.
 
 ### 4. `aep inspect` (v1.0-exp)
 
@@ -145,6 +197,11 @@ In addition to the v0.1 inspection:
 - Maintain **backwards compatibility**:
   - be able to read v0.1 packs and index entries.
   - when updating, you may choose to **migrate** a pack to `"version": "1.0-exp"` (with user approval).
+- Use **agent-aware paths**:
+  - prefer `.claude/aep`, `.codex/aep`, `.gemini/aep`, `.opencode/aep`, `.cursor/aep`.
+  - do not create `.agent/` for new installs.
+- Keep instruction files aligned:
+  - after creating/updating AEP, ensure `AGENTS.md`, `CLAUDE.md`, and other active agent instruction files state that AEP should be loaded first.
 - Keep experimental fields **best-effort**:
   - it is fine if `metrics` or `history` are approximate.
   - do not block core behavior if some fields are missing.
