@@ -76,6 +76,18 @@ Tell your agent:
 
 AEP packs live in `.agent/aep/` as repo-local JSON.
 
+### Install via Smithery
+
+Install page: [smithery.ai/skills/Robi-Labs/aep](https://smithery.ai/skills/Robi-Labs/aep)
+
+Install with Skills CLI:
+
+```bash
+npx @smithery/cli@latest skill add Robi-Labs/aep
+```
+
+You can also install directly from the Smithery skill page into your agent of choice.
+
 ---
 
 ## What you can use AEP for

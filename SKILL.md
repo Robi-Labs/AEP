@@ -1,7 +1,7 @@
 ---
 name: aep
 description: Experimental v1.0 of Robi AEP with richer schema (1.0-exp), better pack matching, confidence scoring, and pack evolution metadata. Still repo-native and file-based; use when you want more expressive, experimental AEP behavior on top of the stable v0.1 design.
-icon: ./assets/aep-smithery-icon.svg
+icon: https://github.com/Robi-Labs.png
 ---
 
 ## Robi AEP Skill v1.0-exp
